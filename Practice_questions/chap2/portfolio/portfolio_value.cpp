@@ -5,6 +5,8 @@ int positionValue(int shares, int priceCents) {
     return shares * priceCents;
 }
 
+// could also make a function to call the output instead of it all in main better when progressing my code
+
 int main() {
     int total {};
 

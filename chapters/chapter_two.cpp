@@ -124,4 +124,112 @@ int main() {
 }
 */
 
-// 2.5 
+// 2.5 Local variables and scope
+
+/*
+Vairables are only accessivle in the scope they are defined in. This is called local scope.
+
+What does this mean. Take a function 
+int add(int x, int y) {
+    return x + y ;
+ }
+
+ x and y are local variables to the add function, this is because if outside of the add function we try to call x or y 
+ we will receive an error. Now lets continue the example
+
+ int main() {
+    int x { 5 };
+    int y { 6 };
+
+    add(x,y);
+    return 0;
+}
+
+ALWAYS START AT MAIN:
+inside of main x is 5 and y is 6 both local to main, then we call add 5, 6 so now the add function is called with 2 local variables x and y
+
+it returns 11 and then the scope of x and y is gone from add and we go back to main where x and y are 5 and 6.
+
+once return 0 happens x and y now no longer mean anything and are gone from mempry.
+ */
+
+ // 2.6 and 2.7 Functions and Forward Declerations
+
+ /*
+ Functions are ofcourse useful when writing code and required to become a better programmer. But what happens when we call a function before its defined
+
+
+ int main() {
+    std::cout << add(5,6);
+    return 0;
+}
+
+int add(int x, int y) {
+    returnn x + y;
+}
+
+running this code will result in an error, because the compiler does not know what the add function is when main is called. The compiler reads from main to add and does not know what add is 
+
+
+The way forward declerations work is to decalre a function to exist before its defined. Remember when we said int x; vs int x = 5; think of it like this
+
+int add(int x, int y); // this is a forward decleration, isnt defined but the compiler knows it exists
+
+ int main() {
+    std::cout << add(5,6);
+    return 0;
+}
+
+int add(int x, int y) {
+    returnn x + y;
+}
+    
+now this works.
+ */
+
+ // 2.8 Programs With Multiple Code Files
+
+ /*
+ when we are working with larger codebases we see that we need multiple files for different things and files with certain helpers.
+ Due to this we come across the need of running multiple files at once. This happes by compiling the files together.
+
+ But how?
+
+ lets see we have
+ main.cpp
+
+ int main() {
+    std::cout << add(5,6);
+    return 0;}
+
+
+and we run the above...
+
+compiler asks wtf is add??? Error
+
+now we put add.cpp
+
+int add(int x, int y) {
+    return x + y;
+}
+to use we know what add is but how will the compiler?
+
+this is where forward declerations come in.
+
+we can add this in main.cpp
+
+
+int add(int x, int Y);
+ int main() {
+    std::cout << add(5,6);
+    return 0;
+}
+ */
+
+ // 2.9 Naming collisions and an introduction to namespaces
+
+ /*
+ Naming collisions are when 2 or more identifiers are so similar that the compiler cannot determine that they are not the same thing
+ 
+ if you have an a.cpp with func mv and then a main.cpp with a func mv compiler will be fine however linker will not
+  */
